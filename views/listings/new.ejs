@@ -1,28 +1,12 @@
-<% layout("/layouts/boilerplate.ejs") %>
-<body>
-  
+<% layout("layouts/boilerplate") %>
 
-    <!-- 20. Creating form to take data for new form -->
-    <h3>Add a new listing</h3>
-    <!-- <form method="POST" action="/listings">
-        <input  name="listing[title]" placeholder="Enter Title" type="text">
-        <br><br>
-        <textarea name="listing[description]" placeholder="Enter you Descriptoin" type="text"></textarea>
-        <br><br>
-        <input  name="listing[image]" placeholder="Enter image url" type="text">
-        <br><br>
-        <input  name="listing[price]" placeholder="Enter price" type="number">
-        <br><br>
-        <input  name="listing[location]" placeholder="Enter location" type="text">
-        <br><br>
-        <input  name="listing[country]" placeholder="Enter country" type="text">
-        <br><br>
-        <button>Add</button>
-    </form> -->
-    <!-- this is commented because created again through bootstrap -->
+<div class="container my-5">
+  <h3 class="my-3 text-center">Add a New Listing</h3>
 
-    <!-- form created by bootstrap -->
-    <form method="POST" action="/listings" class="needs-validation" novalidate  >
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <form method="POST" action="/listings" class="needs-validation" novalidate>
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
           <input
@@ -33,8 +17,11 @@
             class="form-control"
             required
           />
+          <div class="valid-feedback">Title is added successfully.</div>
+          <div class="invalid-feedback">Please enter a valid Title.</div>
         </div>
-  
+        
+
         <div class="mb-3">
           <label for="description" class="form-label">Description</label>
           <textarea
@@ -44,8 +31,10 @@
             class="form-control"
             required
           ></textarea>
+          <div class="valid-feedback">Description is added successfully.</div>
+          <div class="invalid-feedback">Please enter a valid Description.</div>
         </div>
-  
+
         <div class="mb-3">
           <label for="image" class="form-label">Image Link</label>
           <input
@@ -55,19 +44,23 @@
             type="text"
             class="form-control"
           />
+          <div class="valid-feedback">Image is added successfully.</div>
+          <div class="invalid-feedback">Please enter a valid Image.</div>
         </div>
-  
+
         <div class="mb-3">
           <label for="price" class="form-label">Price</label>
           <input
             id="price"
             name="listing[price]"
             placeholder="Enter price"
-            type="number"
             class="form-control"
+            required
           />
+          <div class="valid-feedback">Price is added successfully.</div>
+          <div class="invalid-feedback">Please enter a valid Price.</div>
         </div>
-  
+
         <div class="mb-3">
           <label for="location" class="form-label">Location</label>
           <input
@@ -78,8 +71,10 @@
             class="form-control"
             required
           />
+          <div class="valid-feedback">Location is added successfully.</div>
+          <div class="invalid-feedback">Please enter a valid Location.</div>
         </div>
-  
+
         <div class="mb-3">
           <label for="country" class="form-label">Country</label>
           <input
@@ -90,8 +85,13 @@
             class="form-control"
             required
           />
+          <div class="valid-feedback">Country is added successfully.</div>
+          <div class="invalid-feedback">Please enter a valid Country.</div>
         </div>
-  
-        <button class="btn btn-dark">Add</button>
+
+        <button class="btn btn-success w-100">Add Listing</button>
       </form>
-  </body>
+
+    </div>
+  </div>
+</div>

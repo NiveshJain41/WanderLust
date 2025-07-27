@@ -1,89 +1,98 @@
 <% layout("/layouts/boilerplate.ejs") %>
-<body>
-    <!-- 24. Creating form to take data for new form WIHT METHOD=PUT -->
-    <h3>Editing in listing</h3>
-    <!-- <form method="POST" action="/listings/<%=listing._id%>?_method=PUT">
-        <input  name="listing[title]" value="<%=listing.title%>" type="text">
-        <br><br>
-        <textarea name="listing[description]" type="text"><%=listing.description%></textarea>
-        <br><br>
-        <input  name="listing[image]" value="<%=listing.image%>" type="text">
-        <br><br>
-        <input  name="listing[price]" value="<%=listing.price%>" type="number">
-        <br><br>
-        <input  name="listing[location]" value="<%=listing.location%>" type="text">
-        <br><br>
-        <input  name="listing[country]" value="<%=listing.country%>" type="text">
-        <br><br>
-        <button>Edit</button>
-    </form> -->
-    <!-- commenting above code because recreated again using bootstrap  -->
 
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
-        <div class="mb-3">
-          <label for="title" class="form-label">Title</label>
-          <input
-            id="title"
-            name="listing[title]"
-            value="<%= listing.title %>"
-            type="text"
-            class="form-control"
-          />
-        </div>
-  
-        <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
-          <textarea
-            id="description"
-            name="listing[description]"
-            class="form-control"
-          ><%= listing.description %></textarea>
-        </div>
-  
-        <div class="mb-3">
-          <label for="image" class="form-label">Image Link</label>
-          <input
-            id="image"
-            name="listing[image]"
-            value="<%= listing.image %>"
-            type="text"
-            class="form-control"
-          />
-        </div>
-  
-        <div class="mb-3">
-          <label for="price" class="form-label">Price</label>
-          <input
-            id="price"
-            name="listing[price]"
-            value="<%= listing.price %>"
-            type="number"
-            class="form-control"
-          />
-        </div>
-  
-        <div class="mb-3">
-          <label for="location" class="form-label">Location</label>
-          <input
-            id="location"
-            name="listing[location]"
-            value="<%= listing.location %>"
-            type="text"
-            class="form-control"
-          />
-        </div>
-  
-        <div class="mb-3">
-          <label for="country" class="form-label">Country</label>
-          <input
-            id="country"
-            name="listing[country]"
-            value="<%= listing.country %>"
-            type="text"
-            class="form-control"
-          />
-        </div>
-  
-        <button type="submit" class="btn btn-warning">Update</button>
-      </form>
+<body>
+  <div class="container mt-5">
+    <!-- Editing Listing Form -->
+    <h2 class="mb-4 text-center text-primary">Edit Listing</h2>
+
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          id="title"
+          name="listing[title]"
+          value="<%= listing.title %>"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">Title is updated.</div>
+        <div class="invalid-feedback">Please enter a valid Title.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          id="description"
+          name="listing[description]"
+          class="form-control"
+          rows="4"
+          required
+        ><%= listing.description %></textarea>
+        <div class="valid-feedback">Description is updated.</div>
+        <div class="invalid-feedback">Please enter a valid Description.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Image Link</label>
+        <input
+          id="image"
+          name="listing[image]"
+          value="<%= listing.image %>"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">Image is updated.</div>
+        <div class="invalid-feedback">Please enter a valid Image.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Price (₹)</label>
+        <input
+          id="price"
+          name="listing[price]"
+          value="<%= listing.price %>"
+          type="number"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">Price is updated.</div>
+        <div class="invalid-feedback">Please enter a valid Price.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input
+          id="location"
+          name="listing[location]"
+          value="<%= listing.location %>"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">Location is updated.</div>
+        <div class="invalid-feedback">Please enter a valid Location.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="country" class="form-label">Country</label>
+        <input
+          id="country"
+          name="listing[country]"
+          value="<%= listing.country %>"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">Country is updated.</div>
+        <div class="invalid-feedback">Please enter a valid Country .</div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <a href="/listings/<%= listing._id %>" class="btn btn-outline-secondary">Back</a>
+        <button type="submit" class="btn btn-warning">Update Listing</button>
+      </div>
+    </form>
+  </div>
 </body>

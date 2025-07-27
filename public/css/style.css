@@ -1,59 +1,71 @@
+/* Base reset and layout */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    color: pink;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
 }
+
 .main-content {
     flex: 1;
 }
 
-.navbar{
+/* Navbar */
+.navbar {
     height: 5rem;
     background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.fa-earth-americas{
-    color: blue;
+.fa-earth-americas {
+    color: #007bff;
     font-size: 2rem;
 }
 
-.nav-link{
-    color: black !important; 
+.nav-link {
+    color: black !important;
     font-weight: 500 !important;
 }
 
-.f-info-links a{
-    text-decoration: none;
-    color: rgba(14, 7, 7, 0.932);
-}
-.f-info-links a:hover{
-    text-decoration: underline ;
-}
-
-.f-info-links{
-    width: 100%;
-}
-
-.f-info-social{
-    width: 100%;
-}
-
-.f-info{
+/* Footer */
+.f-info {
     text-align: center;
     height: 8rem;
-    background-color: rgb(212, 212, 212);
+    background-color: #e4e4e4;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: space-evenly;
-
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
 }
 
-.listing-link{
+.f-info-links,
+.f-info-social {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.f-info-links a {
     text-decoration: none;
+    color: #1c1c1c;
+    font-weight: 500;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+/* Listings */
+.listing-link {
+    text-decoration: none;
+    color: inherit;
 }
 
 .show-image {
@@ -61,11 +73,44 @@ html, body {
     object-fit: cover;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
+    width: 100%;
 }
+
 .card-title {
     font-size: 1.3rem;
+    font-weight: 600;
 }
 
 .card-text {
     font-size: 0.95rem;
+    color: #555;
+}
+
+/* Price formatting */
+.price-tag {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #28a745;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .show-image {
+        height: 200px;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    .price-tag {
+        font-size: 1rem;
+    }
 }

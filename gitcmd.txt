@@ -1,0 +1,4 @@
+# Make changes in code
+git add .
+git commit -m "Fix navbar responsiveness"
+git push

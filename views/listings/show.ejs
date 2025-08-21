@@ -13,6 +13,9 @@
             style="height: 250px; object-fit: cover"
           />
           <div class="card-body">
+            <p class="card-text text-dark mb-3">
+              <b>Owned By : <%= listing.owner.username %></b>
+            </p>
             <p class="card-text text-dark mb-3"><%= listing.description %></p>
 
             <div class="mb-2">
@@ -31,6 +34,8 @@
               <%= listing.location %> <%= listing.country %>
             </div>
           </div>
+
+          <% if(currUser && currUser._id.equals(listing.owner._id)) {%>
 
           <div
             class="card-footer bg-white border-0 d-flex justify-content-between px-3 pb-3"
@@ -51,12 +56,15 @@
               </button>
             </form>
           </div>
+          <% } %>
         </div>
         <br /><br />
         <hr />
       </div>
       <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-4">
         <h4>Leave a review!!</h4>
+
+        <% if(currUser){ %>
         <form
           action="/listings/<%=listing.id%>/reviews"
           method="POST"
@@ -90,36 +98,45 @@
             Submit
           </button>
         </form>
+        <% } %>
       </div>
 
-      <hr>
+      <hr />
 
       <div class="card shadow-lg border-2 rounded-4 overflow-hidden my-4">
         <div class="card-body">
-          <h4 class="card-title mb-4 text-center text-primary fw-bold border-bottom pb-2">All Reviews</h4>
+          <h4
+            class="card-title mb-4 text-center text-primary fw-bold border-bottom pb-2"
+          >
+            All Reviews
+          </h4>
           <ul class="list-group list-group-flush">
             <% for (let review of listing.reviews) { %>
-              <li class="list-group-item d-flex justify-content-between align-items-start align-items-center">
-                <div class="me-auto">
-                  <div class="fw-semibold">Nivesh Jain</div>
-                  <div><%= review.comment %></div>
-                </div>
-                <div class="d-flex flex-column align-items-end">
-                  <span class="badge bg-success rounded-pill mb-2"><%= review.rating %>★</span>
-                  <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
-                    <button type="submit" class="btn btn-sm btn-outline-danger">
-                      <i class="bi bi-trash"></i> Delete
-                    </button>
-                  </form>
-                </div>
-              </li>
-            <% } %>      
+            <li
+              class="list-group-item d-flex justify-content-between align-items-start align-items-center"
+            >
+              <div class="me-auto">
+                <div class="fw-semibold">@<%= review.author.username %></div>
+                <div><%= review.comment %></div>
+              </div>
+              <div class="d-flex flex-column align-items-end">
+                <span class="badge bg-success rounded-pill mb-2"
+                  ><%= review.rating %>★</span
+                >
+                <form
+                  method="POST"
+                  action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+                >
+                  <button type="submit" class="btn btn-sm btn-outline-danger">
+                    <i class="bi bi-trash"></i> Delete
+                  </button>
+                </form>
+              </div>
+            </li>
+            <% } %>
           </ul>
+        </div>
       </div>
-      
-</div>
-
-      
     </div>
   </div>
 </body>

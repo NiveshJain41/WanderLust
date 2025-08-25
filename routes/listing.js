@@ -47,7 +47,6 @@ router.get(
 router.post(
   "/",
   isLoggedIn,
-  isOwner,
   validateListing,
   wrapAsync(async (req, res) => {
     const newListing = new Listing(req.body.listing);

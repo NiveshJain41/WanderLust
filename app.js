@@ -6,7 +6,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
-const flash = require("connect-flash");
+const flash = require("express-flash");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
@@ -53,6 +53,7 @@ app.get("/", (req, res) => {
 
 app.use(session(sessionOptions));
 app.use(flash());
+
 
 app.use(passport.initialize());
 app.use(passport.session());

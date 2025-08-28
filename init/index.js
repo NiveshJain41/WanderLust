@@ -40,9 +40,9 @@ const initDB = async () => {
     // Map the data and extract image URL from the object
     const processedData = initData.data.map((obj) => ({
       ...obj,
-      image: obj.image.url, // Extract URL from image object
       owner: defaultUser._id,
     }));
+    
 
     // Insert the processed data
     await Listing.insertMany(processedData);

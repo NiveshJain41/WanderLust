@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  #map {
+    width: 600px;
+    height: 400px;  /* or 100vh for fullscreen */
+  }
+  

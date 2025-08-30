@@ -4,46 +4,57 @@ const Schema = mongoose.Schema;
 const Review = require("./review.js");
 const User = require("./user.js");
 
-const listingSchema = new Schema({
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  image: {
-    url: String,
-    filename : String
-  },
-  price: {
-    type: Number,
-    required: true,
-    min: 0,
-  },
-  location: {
-    type: String,
-    required: true,
-  },
-  country: {
-    type: String,
-    required: true,
-  },
-  reviews: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Review",
+const listingSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
     },
-  ],
-  owner: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
+    description: {
+      type: String,
+      required: true,
+    },
+    image: {
+      url: String,
+      filename: String,
+    },
+    price: {
+      type: Number,
+      required: true,
+      min: 0,
+    },
+    location: {
+      type: String,
+      required: true,
+    },
+    country: {
+      type: String,
+      required: true,
+    },
+    reviews: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Review",
+      },
+    ],
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    geometry: {
+      type: {
+        type: String, // Don't do `{ location: { type: String } }`
+        enum: ['Point'], // 'location.type' must be 'Point'
+        required: true
+      },
+      coordinates: {
+        type: [Number],
+        required: true
+      }
+    }
   },
-}, {
-  timestamps: true,
-});
+);
 
 // Post middleware to delete associated reviews when listing is deleted
 listingSchema.post("findOneAndDelete", async (listing) => {
